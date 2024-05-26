@@ -1,0 +1,49 @@
+@import 'variables.scss';
+@import 'mixins';
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #000;
+    color: #fff;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    color: $red;
+    @include links-font;
+    
+}
+
+ nav {
+    width:100%;;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.span {
+    margin: 0 1rem;
+    color: #fff;
+    text-decoration: none;
+    @include links-font;
+    
+
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+
+
+
+}
+
+
+
+

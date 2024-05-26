@@ -17,3 +17,41 @@ font-style: normal;
 
 line-height: 24px; /* 50% */
 }
+
+@mixin selectday {
+    background: rgba(196, 196, 196, 0.50);
+}
+
+
+
+// Flex Centering
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  // Flex Column Centering
+  @mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  // Card Style
+  @mixin card {
+    background-color: $card-background-color;
+    border-radius: 8px;
+    padding: $spacing-unit;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  // Font Style
+  @mixin font-style($size, $weight: normal) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $font-family;
+  }
+  

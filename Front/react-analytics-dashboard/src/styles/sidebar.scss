@@ -1,0 +1,30 @@
+
+@import 'variables';
+@import 'mixins';
+
+.sidebar {
+    background-color: $black;
+    width: 117px;
+    height:100%;
+    bottom: 0;
+    @include flex-column-center;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        margin: $spacing-unit 0;
+    }
+
+    a {
+        
+        text-align: center;
+        font-size: 1.5rem;
+        text-decoration: none;
+        display: block;
+        padding: $spacing-unit;
+    }
+}

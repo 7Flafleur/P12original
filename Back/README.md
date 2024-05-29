@@ -23,9 +23,9 @@ If you are working with several versions of NodeJS, we recommend you install [nv
 - The `yarn dev` command will allow you to run the micro API.
 
 
-## 3. Project (**with Docker**)
+<!-- ## 3. Project (**with Docker**) -->
 
-### 2.1 Prerequisites
+<!-- ### 2.1 Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
@@ -42,7 +42,7 @@ Finally, if you have VsCode, you can easily launch your project in a docker envi
 
 You will need the [Remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Once you have this extension installed, just click on the `Reopen in Container` button.
 
-Once in the container, run the `yarn dev` command.
+Once in the container, run the `yarn dev` command. -->
 
 ## 4. Endpoints
 

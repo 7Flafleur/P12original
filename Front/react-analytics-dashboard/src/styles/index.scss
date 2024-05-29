@@ -2,6 +2,7 @@
 @import 'app.scss';
 @import 'header.scss';
 @import 'sidebar.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 
 
@@ -10,8 +11,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: $font-family;
-    
-  }
+}
+
+
+
   
   html, body {
     width: 100%;

@@ -1,7 +1,7 @@
 import Sidebar from "./Sidebar";
 
 export default function Main(){
-    const userid= 12;
+    // const userid= 12;
     const firstname = 'Karl';
 
 

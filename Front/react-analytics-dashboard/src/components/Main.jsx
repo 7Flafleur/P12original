@@ -1,37 +1,37 @@
 import Sidebar from "./Sidebar";
 import { useParams } from 'react-router-dom';
-import getUser from "../api/api";
+import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
 import { useState, useEffect } from "react";
 
-export default function Main(){
-    
-    const {userId}=useParams();
-    const [user,setUser] =useState(null);
-    const [error,setError] =useState(null);
+export default function Main() {
+
+   const userId= 12;
+    const [user, setUser] = useState(null);
+    const [error, setError] = useState(null);
 
 
-    useEffect(()=>{
+
+    useEffect(() => {
+
         const fetchData = async () => {
 
-            try{
+            try {
                 const userData = await getUser(userId);
                 setUser(userData);
-            } catch(err){
+            } catch (err) {
                 setError(err.message);
             }
         };
 
+        fetchData();
     }
-    )
+        , [userId]);
 
-  
-    
+       
 
-
-
-    return(
+    return (
         <div className="main">
-             <Sidebar/>
+            <Sidebar />
             <div className="dashboardcontent">
                 <h1>Bonjour {}</h1>
             </div>

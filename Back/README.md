@@ -23,9 +23,9 @@ If you are working with several versions of NodeJS, we recommend you install [nv
 - The `yarn dev` command will allow you to run the micro API.
 
 
-<!-- ## 3. Project (**with Docker**) -->
-
-<!-- ### 2.1 Prerequisites
+<!-- ## 3. Project (**with Docker**)  -->
+<!-- 
+ ### 2.1 Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
@@ -36,8 +36,8 @@ If you are working with several versions of NodeJS, we recommend you install [nv
 - The `docker container stop micro-api` command will allow you to stop your micro-api.
 - The `docker container rm micro-api` command will allow you to delete your micro-api container.
 
-### 2.3 Vscode and container remotes
-
+### 2.3 Vscode and container remotes -->
+<!-- 
 Finally, if you have VsCode, you can easily launch your project in a docker environment.
 
 You will need the [Remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Once you have this extension installed, just click on the `Reopen in Container` button.

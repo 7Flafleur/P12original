@@ -3,7 +3,7 @@ import mockData from './__mocks__.json';
 const USE_MOCK_DATA = false; // Set this to false to fetch data from the URL
 
 
-export default async function getUser(userId){
+export async function getUser(userId){
 
   if(USE_MOCK_DATA) {
     return mockData.USER_MAIN_DATA.find(user => user.id === userId)
@@ -14,7 +14,28 @@ export default async function getUser(userId){
   }
 
   const user = await response.json();
+
+  console.log('Fetched user:', user); // Add this line
+
   return user;
 
 }
+
+
+export async function getUserActivity(userId){
+
+}
+
+
+export async function getUserPerformance(userId){
+
+}
+
+
+
+export async function getUserAverageSessions(userId){
+
+}
+
+
 

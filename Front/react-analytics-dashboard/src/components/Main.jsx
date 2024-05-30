@@ -44,7 +44,8 @@ export default function Main() {
             <div className="main">
             <Sidebar />
                 <div className="dashboardcontent">
-                    <h1>Bonjour <span className="firstname">{user? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></h1>
+                    <div className="h1">Bonjour <span className="firstname">{user? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
+                    <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
                 </div>
             </div>
         </div>

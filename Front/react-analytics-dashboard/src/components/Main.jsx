@@ -8,17 +8,17 @@ export default function Main() {
 
     const { id } = useParams();
     const [user, setUser] = useState(null);
+    const [activity,setActivity] =useState(null);
+    const [averageSessions,setaverageSessions] = useState(null);
+    const [performance,setPerformance] = useState(null);
     const [error, setError] = useState(null);
 
 
-    console.log('Rendering Main component');
-
-
-
+    // console.log('Rendering Main component');
 
     useEffect(() => {
 
-        console.log('Running useEffect');
+        // console.log('Running useEffect');
 
 
         const fetchData = async () => {
@@ -39,13 +39,20 @@ export default function Main() {
 
     return (
         <div className="Body">
-             <Header />
-           
+            <Header />
+
             <div className="main">
-            <Sidebar />
+                <Sidebar />
                 <div className="dashboardcontent">
-                    <div className="h1">Bonjour <span className="firstname">{user? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
-                    <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
+                    <section className="greeting">
+                        <div className="h1">Bonjour <span className="firstname">{user ? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
+                        <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
+                    </section>
+                    <section className="energy">
+                        <ul className="macros">
+
+                        </ul>
+                    </section>
                 </div>
             </div>
         </div>

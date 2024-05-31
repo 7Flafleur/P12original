@@ -23,11 +23,25 @@ export async function getUser(userId){
 
 
 export async function getUserActivity(userId){
+  if(USE_MOCK_DATA) {
+    return mockData.USER_ACTIVITY.find(useractivity => useractivity.data.userId === userId)
+  }
+  const response=await fetch(`http://localhost:3000/user/${userId}/activity`)
+  if (!response.ok){
+    throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);
+  }
+
+  const useractivity = await response.json();
+
+  console.log('Fetched activity:', useractivity); // Add this line
+
+  return useractivity;
 
 }
 
 
 export async function getUserPerformance(userId){
+
 
 }
 

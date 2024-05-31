@@ -36,7 +36,7 @@ import {
     return null;
   };
   
-  export default function Dailyactivity(){
+  export default function Dailyactivity(props){
     return (
       <div className="dailyactivity">
           <ResponsiveContainer width="100%" height={250}>

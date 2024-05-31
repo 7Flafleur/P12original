@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
 import { useState, useEffect } from "react";
 import Dailyactivity from "./Dailyactivity";
+import Averagesessions from "./Averagesessions";
+import Performance from "./Performance";
 
 export default function Main() {
 
@@ -58,7 +60,7 @@ export default function Main() {
                 .catch(err => {
                     console.error("Error in Promise.all:", err);
                 });
- 
+
         };
         fetchData();
     }, [id])
@@ -75,8 +77,12 @@ export default function Main() {
                     <section className="greeting">
                         <div className="h1">Bonjour <span className="firstname">{user ? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
                         <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
-                        <Dailyactivity/>
-                        <div className="sessionsperfo"></div>
+                        <Dailyactivity activity={activity} />
+                        <div className="sessionsperfo">
+                            <Averagesessions sessions={averageSessions} />
+                            <Performance performance={performance} />
+
+                        </div>
                     </section>
                     <section className="energyright">
                         <ul className="macros">

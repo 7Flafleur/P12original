@@ -1,2 +1,26 @@
 @import "mixins.scss";
 @import 'variables.scss';
+
+
+.averagesessions {
+    border: blueviolet solid 2px;
+    background-color: #ff0000;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    width:33%;
+    height: 100%;
+  }
+  
+  .custom-tooltip {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  h2 {
+    margin: 0;
+    padding: 10px 0;
+  }
+  

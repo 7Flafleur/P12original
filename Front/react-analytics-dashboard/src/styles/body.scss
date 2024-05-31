@@ -1,0 +1,36 @@
+@import "mixins.scss";
+@import 'variables.scss';
+
+
+.Body{
+    display: flex;
+    flex-direction: column;
+  }
+  
+    .main{
+      
+      display: flex;
+      width:100%;
+      height: 100%;
+  
+      .h1{
+        // border: red solid 1px;
+        padding-top: 4rem;
+        text-align: left;
+        padding-left: 7rem;
+        @include h1-font;
+  
+      }
+  
+      .congrats{
+        // border: blue solid 1px;
+        padding-left: 7rem;
+        padding-top: 2rem;
+        
+        
+      }
+      
+      .firstname{
+        color: $red;
+      }
+    }

@@ -1,7 +1,12 @@
 @use "sass:math";
 @import 'app.scss';
+@import 'averagesessions.scss';
+@import 'body.scss';
 @import 'header.scss';
 @import 'sidebar.scss';
+@import 'dailyactivity.scss';
+@import 'radar.scss';
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 
@@ -22,35 +27,3 @@
     overflow: hidden; 
   }
   
-.Body{
-  display: flex;
-  flex-direction: column;
-}
-
-  .main{
-    
-    display: flex;
-    width:100%;
-    height: 100%;
-
-    .h1{
-      // border: red solid 1px;
-      padding-top: 4rem;
-      text-align: left;
-      padding-left: 7rem;
-      @include h1-font;
-
-    }
-
-    .congrats{
-      // border: blue solid 1px;
-      padding-left: 7rem;
-      padding-top: 2rem;
-      
-      
-    }
-    
-    .firstname{
-      color: $red;
-    }
-  }

@@ -41,6 +41,19 @@ export async function getUserActivity(userId){
 
 
 export async function getUserPerformance(userId){
+  if(USE_MOCK_DATA) {
+    return mockData.USER_PERFORMANCE.find(userperformance => userperformance.data.userId === userId)
+  }
+  const response=await fetch(`http://localhost:3000/user/${userId}/performance`)
+  if (!response.ok){
+    throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);
+  }
+
+  const userperformance = await response.json();
+
+  console.log('Fetched activity:', userperformance); // Add this line
+
+  return userperformance;  
 
 
 }
@@ -48,6 +61,20 @@ export async function getUserPerformance(userId){
 
 
 export async function getUserAverageSessions(userId){
+
+  if(USE_MOCK_DATA) {
+    return mockData.USER_AVERAGE_SESSIONS.find(useravsessions => useravsessions.data.userId === userId)
+  }
+  const response=await fetch(`http://localhost:3000/user/${userId}/average-sessions`)
+  if (!response.ok){
+    throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);
+  }
+
+  const useravsessions = await response.json();
+
+  console.log('Fetched activity:', useravsessions); // Add this line
+
+  return useravsessions;
 
 }
 

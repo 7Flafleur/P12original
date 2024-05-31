@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Dailyactivity from "./Dailyactivity";
 import Averagesessions from "./Averagesessions";
 import Performance from "./Performance";
+import Score from "./Score";
 
 export default function Main() {
 
@@ -15,6 +16,8 @@ export default function Main() {
     const [averageSessions, setaverageSessions] = useState(null);
     const [performance, setPerformance] = useState(null);
     const [errors, setErrors] = useState([]);
+
+    const score= 0.12;
 
 
     // console.log('Rendering Main component');
@@ -81,7 +84,7 @@ export default function Main() {
                         <div className="sessionsperfo">
                             <Averagesessions sessions={averageSessions} />
                             <Performance performance={performance} />
-
+                            <Score score={score} />
                         </div>
                     </section>
                     <section className="energyright">

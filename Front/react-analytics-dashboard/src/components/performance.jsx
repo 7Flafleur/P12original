@@ -12,8 +12,8 @@ const data = [
   { subject: 'Energie', A: 65, fullMark: 150 },
 ];
 
-export default function Performance(){
-  <div className="performance">
+export default function Performance(props){
+ return ( <div className="performance">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />
@@ -23,6 +23,7 @@ export default function Performance(){
         </RadarChart>
       </ResponsiveContainer>
   </div>
+  );
 }
 
 

@@ -1,0 +1,25 @@
+.score{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    color: #282d30;
+    text-align: center;
+   width:30%;
+    margin-right: 20px;
+}
+
+.score-chart-title {
+    font-size: 16px;
+    color: #282d30;
+    margin-bottom: 10px;
+  }
+  
+  .score-chart .recharts-surface {
+    transform: rotate(-90deg);
+  }
+  
+  .custom-tooltip {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }

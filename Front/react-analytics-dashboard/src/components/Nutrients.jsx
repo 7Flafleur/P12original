@@ -19,9 +19,9 @@ export default function Nutrients(props) {
     return (
         <ul className="nutrients">
            <li><img src={caloriesIcon} alt="" /><p><span>{keyData.calorieCount}kCal</span><span className="unit">Calories </span></p></li>
-           <li><img src={proteinIcon} alt="" /><p><span></span><span></span></p></li>
-           <li><img src={carbsIcon} alt="" /><p><span></span><span></span></p></li>
-           <li><img src={fatIcon} alt="" /><p><span></span><span></span></p></li>
+           <li><img src={proteinIcon} alt="" /><p><span>{keyData.proteinCount}g</span><span className="unit">Proteines</span></p></li>
+           <li><img src={carbsIcon} alt="" /><p><span></span>{keyData.carbohydrateCount}g <span className="unit">Glucides</span></p></li>
+           <li><img src={fatIcon} alt="" /><p><span></span>{keyData.lipidCount}g <span className="unit">Lipides</span></p></li>
         </ul>
     )
 }

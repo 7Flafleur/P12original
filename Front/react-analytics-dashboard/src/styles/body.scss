@@ -15,7 +15,7 @@
 
 }
 
-.dashboardcontent {
+.dashboardcontentleft {
   border: blue dotted 2px;
   width: 100%;
   display: flex;
@@ -24,27 +24,31 @@
   .greeting{
     border: yellow solid 3px;
     width: 75%;
+    padding-left: 7rem;
   }
 
 .h1 {
     // border: red solid 1px;
     padding-top: 4rem;
     text-align: left;
-    padding-left: 7rem;
+    
     @include h1-font;
   }
 
 
   .congrats {
     // border: blue solid 1px;
-    
+    text-align: left;
     padding-top: 2rem;
+    padding-bottom: 3rem;
   }
 
   .firstname {
     color: $red;
   }
 
-  .energy{
+
+
+  .energyright{
     border:pink solid 3px;
   }

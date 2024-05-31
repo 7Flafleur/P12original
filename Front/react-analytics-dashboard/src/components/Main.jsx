@@ -3,6 +3,7 @@ import Header from "./Header";
 import { useParams } from 'react-router-dom';
 import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
 import { useState, useEffect } from "react";
+import Dailyactivity from "./Dailyactivity";
 
 export default function Main() {
 
@@ -70,12 +71,14 @@ export default function Main() {
 
             <div className="main">
                 <Sidebar />
-                <div className="dashboardcontent">
+                <div className="dashboardcontentleft">
                     <section className="greeting">
                         <div className="h1">Bonjour <span className="firstname">{user ? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
                         <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
+                        <Dailyactivity/>
+                        <div className="sessionsperfo"></div>
                     </section>
-                    <section className="energy">
+                    <section className="energyright">
                         <ul className="macros">
 
                         </ul>

@@ -1,7 +1,7 @@
-import yoga from '../styles/yoga.png';
-import swim from '../styles/swim.png';
-import bike from '../styles/bike.png';
-import dumbbell from '../styles/dumbbell.png';
+import yoga from '../styles/pics/yoga.png';
+import swim from '../styles/pics/swim.png';
+import bike from '../styles/pics/bike.png';
+import dumbbell from '../styles/pics/dumbbell.png';
 
 
 export default function Sidebar(){

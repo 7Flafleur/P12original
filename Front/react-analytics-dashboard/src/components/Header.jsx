@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import Icon from '../styles/Icon.png'
+import Icon from '../styles/pics/Icon.png'
 
 export default function Header() {
     return (

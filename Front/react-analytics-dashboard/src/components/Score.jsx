@@ -10,20 +10,24 @@ const data = [
 ];
 
 export default function Score(props){ 
-  <div className="score">
+return (  <div className="score">
       <ResponsiveContainer width="100%" height="100%">
-        <RadialBarChart cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={data}>
+        <RadialBarChart cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={data} startAngle={90} endAngle={180}>
           <RadialBar
             minAngle={15}
-            label={{ position: 'insideStart', fill: '#fff' }}
+            
             background
             clockWise
             dataKey="value"
           />
-          <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={{ top: 0, left: 350 }} />
         </RadialBarChart>
       </ResponsiveContainer>
-  </div>
+      <div className="score-percentage">
+      <p className='percent'>12%</p>
+      <p className='objectif'>de votre objectif</p>
+    </div>
+
+  </div>)
 }
 
 

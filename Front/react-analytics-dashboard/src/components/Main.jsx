@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
 import { useState, useEffect } from "react";
 import Dailyactivity from "./Dailyactivity";
+import Nutrients from "./Nutrients";
 import Averagesessions from "./Averagesessions";
 import Performance from "./Performance";
 import Score from "./Score";
@@ -76,8 +77,8 @@ export default function Main() {
 
             <div className="main">
                 <Sidebar />
-                <div className="dashboardcontentleft">
-                    <section className="greeting">
+                <div className="dashboardcontent">
+                    <section className="left">
                         <div className="h1">Bonjour <span className="firstname">{user ? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
                         <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
                         <Dailyactivity activity={activity} />
@@ -87,10 +88,8 @@ export default function Main() {
                             <Score score={score} />
                         </div>
                     </section>
-                    <section className="energyright">
-                        <ul className="macros">
-
-                        </ul>
+                    <section className="right">
+                     <Nutrients />
                     </section>
                 </div>
             </div>

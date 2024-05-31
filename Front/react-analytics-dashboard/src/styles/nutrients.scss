@@ -1,0 +1,23 @@
+
+
+.nutrients{
+    list-style-type:none;
+    width: 100%;
+
+    li{
+        display: flex;
+        gap:2rem;
+        margin-bottom: 4.5rem;
+
+        img{
+            height:5rem;
+            width:5rem;
+        }
+
+        p{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}

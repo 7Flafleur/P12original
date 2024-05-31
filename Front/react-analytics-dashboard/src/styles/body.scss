@@ -15,14 +15,14 @@
 
 }
 
-.dashboardcontentleft {
-  border: blue dotted 2px;
+.dashboardcontent {
+  border: orange dotted 10px;
   width: 100%;
   display: flex;
 
 }
-  .greeting{
-    border: yellow solid 3px;
+  .left{
+    border: grey solid 3px;
     width: 75%;
     padding-left: 7rem;
   }
@@ -49,8 +49,12 @@
 
 
 
-  .energyright{
+  .right{
     border:pink solid 3px;
+    width: 25%;
+    padding-top: 12rem;
+    padding-left: 5rem;
+
   }
 
   .sessionsperfo{
@@ -59,4 +63,5 @@
     gap: 10px;
     height:30%;
     width:100%;
+    margin-top: 3rem;
   }

@@ -15,11 +15,10 @@ export default function Main() {
     const [user, setUser] = useState(null);
     const [activity, setActivity] = useState(null);
     const [averageSessions, setaverageSessions] = useState(null);
-    const [usernutrients,SetNutrients] =useState(null);
     const [performance, setPerformance] = useState(null);
     const [errors, setErrors] = useState([]);
 
-    const score = 0.12;
+
 
 
     // console.log('Rendering Main component');
@@ -77,6 +76,12 @@ export default function Main() {
 
     const nutrients = user ? user.data.keyData : null;
 
+    const score = user ? user.data.score : null;
+
+    const performanceprop= user? performance.data :null;
+
+    console.log("Score:",score)
+
     console.log ("Main nutrients:",nutrients)
 
 
@@ -106,7 +111,7 @@ export default function Main() {
     )}
 { averageSessions && performance && score ?(<div className="sessionsperfo">
                             <Averagesessions sessions={averageSessions} />
-                            <Performance performance={performance} />
+                            <Performance performance={performanceprop.data} kinds={performanceprop.kind}/>
                             <Score score={score} />
                         </div>):
       (<div>Loading...</div>

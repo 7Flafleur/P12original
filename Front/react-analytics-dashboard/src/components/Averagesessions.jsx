@@ -4,8 +4,6 @@ import {
   LineChart,
   Line,
   XAxis,
-  YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
@@ -23,8 +21,8 @@ const data = [
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="custom-tooltip" style={{ backgroundColor: '#fff', padding: '5px', border: '1px solid #ccc' }}>
-        <p className="label">{`${label} : ${payload[0].value} min`}</p>
+      <div className="custom-tooltip" style={{ backgroundColor: '#fff', color: '#000', padding: '5px', border: '1px solid #ccc' }}>
+        <p className="label">{`${payload[0].value} min`}</p>
       </div>
     );
   }
@@ -41,17 +39,17 @@ export default function Averagesessions(){
 
         <div className="averagesessions">
         <ResponsiveContainer width="100%" height="100%">
+        <p className='durée'>Durée moyenne des séances</p>
+
           <LineChart
             data={data}
-            margin={{
-              top: 20, right: 20, left: 20, bottom: 0,
-            }}
+       
           >
          
-            <XAxis dataKey="day" axisline={false} />
+            <XAxis dataKey="day" axisLine={false} stroke='#fff' opacity={0.7} tickLine={false} tickMargin={-20}  />
            
-            <Tooltip content={<CustomTooltip />} />  
-            <Line type="monotone" dataKey="duration" stroke="#ffffff" dot={{ r: 0 }} activeDot={{ r: 8 }} />
+            <Tooltip content={<CustomTooltip  />} />  
+            <Line type="monotone" dataKey="duration" stroke="#ffffff" dot={{ r: 0 }} activeDot={{ r: 3 }} />
           </LineChart>
         </ResponsiveContainer>
       </div>

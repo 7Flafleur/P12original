@@ -9,26 +9,12 @@ import {
     ResponsiveContainer,
   } from 'recharts';
 
-  import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
-  
 
   
   export default function Dailyactivity(props){
 
-    // const data = [
-    //   { ind: 1, kilogram: 69, calories: 300 },
-    //   { ind: 2, kilogram: 70, calories: 320 },
-    //   { ind: 3, kilogram: 68, calories: 356 },
-    //   { ind: 4, kilogram: 69, calories: 300 },
-    //   { ind: 5, kilogram: 69, calories: 310 },
-    //   { ind: 6, kilogram: 69, calories: 315 },
-    //   { ind: 7, kilogram: 69, calories: 300 },
-    //   { ind: 8, kilogram: 70, calories: 360 },
-    //   { ind: 9, kilogram: 69, calories: 320 },
-    //   { ind: 10, kilogram: 69, calories: 340 },
-    // ];
   
-    // console.log("Props",props.activity)
+    console.log("Props",props.activity)
 
 
 

@@ -4,22 +4,62 @@ import {
 } from 'recharts';
 
 const data = [
-  { subject: 'Cardio', A: 120, fullMark: 150 },
-  { subject: 'Intensité', A: 98, fullMark: 150 },
-  { subject: 'Vitesse', A: 86, fullMark: 150 },
-  { subject: 'Force', A: 99, fullMark: 150 },
-  { subject: 'Endurance', A: 85, fullMark: 150 },
-  { subject: 'Energie', A: 65, fullMark: 150 },
+  { kind: 'Cardio', value: 120, fullMark: 120 },
+  { kind: 'Intensité', value: 98, fullMark: 150 },
+  { kind: 'Vitesse', value: 86, fullMark: 150 },
+  { kind: 'Force', value: 99, fullMark: 150 },
+  { kind: 'Endurance', value: 85, fullMark: 150 },
+  { kind: 'Energie', value: 65, fullMark: 150 },
 ];
 
 export default function Performance(props){
- return ( <div className="performance">
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+
+const perf=props.performance
+
+
+const maxVal = Math.max(...perf.map(item => item.value));
+
+const newperf = perf.map((item) => {
+  let kind;
+  switch(item.kind){
+    case 1:
+      kind = 'Cardio';
+      break;
+    case 2:
+      kind = 'Energie';
+      break;
+    case 3:
+      kind = 'Endurance';
+      break;
+    case 4:
+      kind = 'Force';
+      break;
+    case 5:
+      kind = 'Vitesse';
+      break;
+    case 6:
+      kind = 'Intensité';
+      break;
+    default:
+      kind = item.kind;
+  }
+  return {...item, kind, fullMark: maxVal};
+});
+
+
+console.log("NewPerf",newperf)
+
+
+
+
+
+ return ( <div className="performance" style={{ padding: 0 }}>
+      <ResponsiveContainer width="100%" height="100%" style={{padding:0,margin:0}} >
+        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={newperf}>
           <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis angle={30} domain={[0, 150]} />
-          <Radar name="Mike" dataKey="A" stroke="#FF0101" fill="#FF0101" fillOpacity={0.6} />
+          <PolarAngleAxis dataKey="kind" fontSize={10} fontWeight={800} color='#FFF'/>
+          <PolarRadiusAxis domain={[0, maxVal]} tick={false} />
+          <Radar name="Mike" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
   </div>

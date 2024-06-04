@@ -28,7 +28,7 @@ import {
     //   { ind: 10, kilogram: 69, calories: 340 },
     // ];
   
-    console.log("Props",props.activity)
+    // console.log("Props",props.activity)
 
 
 

@@ -78,6 +78,7 @@ import {
 
     return (
       <div className="dailyactivity">
+        <p className='quotidienne'>Activité quotidienne <span>Poids</span> <span>Calories brûlées</span> </p>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart
               data={data}

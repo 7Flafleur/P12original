@@ -9,16 +9,21 @@ import {
     ResponsiveContainer,
   } from 'recharts';
 
+  import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
+  
 
   
   export default function Dailyactivity(props){
 
   
-    console.log("Props",props.activity)
+    console.log("Props activity",props.activity)
 
 
 
-    const data= props.activity
+    const data= props.activity.map((item,index)=>{
+      item.day=index+1;
+      return {...item}
+    })
   
 
     
@@ -81,7 +86,7 @@ import {
               }}bargap={10} barCategoryGap="30%"
             >
               <CartesianGrid border ="solid blue 1px" strokeDasharray="1 3" padding={{bottom:50}} />
-              <XAxis dataKey="ind" axisLine={false} margin={20}  tickLine ={false} tickMargin={20} height={80} padding={{top:20}}/>
+              <XAxis dataKey="day" axisLine={false} margin={20}  tickLine ={false} tickMargin={20} height={80} padding={{top:10}}/>
               <YAxis yAxisId="right" orientation="left" stroke="transparent"  />
               <YAxis yAxisId="kilogram" orientation="right" stroke="#ff0000" domain={[min,max]} axisLine={false} tickLine={false} tickFormatter={formatTicks} tickMargin={20}  />
               <Tooltip content={<CustomTooltip />} />

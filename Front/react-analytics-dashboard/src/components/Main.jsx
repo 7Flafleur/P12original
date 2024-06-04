@@ -80,6 +80,8 @@ export default function Main() {
 
     const performanceprop= user? performance.data :null;
 
+    const sessions= user? averageSessions.data.sessions : null;
+
     console.log("Score:",score)
 
     console.log ("Main nutrients:",nutrients)
@@ -110,7 +112,7 @@ export default function Main() {
       <div>Loading...</div>
     )}
 { averageSessions && performance && score ?(<div className="sessionsperfo">
-                            <Averagesessions sessions={averageSessions} />
+                            <Averagesessions sessions={sessions} />
                             <Performance performance={performanceprop.data} kinds={performanceprop.kind}/>
                             <Score score={score} />
                         </div>):

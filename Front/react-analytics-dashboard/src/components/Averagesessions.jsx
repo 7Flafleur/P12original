@@ -4,19 +4,11 @@ import {
   LineChart,
   Line,
   XAxis,
+  YAxis,
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
 
-const data = [
-  { day: 'L', duration: 30 },
-  { day: 'M', duration: 45 },
-  { day: 'M', duration: 50 },
-  { day: 'J', duration: 40 },
-  { day: 'V', duration: 60 },
-  { day: 'S', duration: 70 },
-  { day: 'D', duration: 80 },
-];
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -33,23 +25,62 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 
 
-export default function Averagesessions(){
+export default function Averagesessions(props){
+
+console.log("Session props:", props.sessions)
+
+const sessions = props.sessions.map((item) => {
+  let day;
+  switch(item.day){
+    case 1:
+      day = 'L';
+      break;
+    case 2:
+      day = 'M';
+      break;
+    case 3:
+      day = 'M';
+      break;
+    case 4:
+      day = 'J';
+      break;
+    case 5:
+      day = 'V';
+      break;
+    case 6:
+      day = 'S';
+      break;
+    case 7:
+      day= 'D'
+      break;
+    default:
+      day = item.day;
+  }
+  return {...item, day};
+});
+
+const minVal = Math.min(...sessions.map(item => item.sessionLength));
+const maxVal = Math.max(...sessions.map(item => item.sessionLength));
+
+
+
+
 
     return(
 
         <div className="averagesessions">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="90%">
         <p className='durée'>Durée moyenne des séances</p>
 
           <LineChart
-            data={data}
+            data={sessions} margin={{ top: -20, right: 0, left: 0, bottom: 0 }}
        
           >
          
-            <XAxis dataKey="day" axisLine={false} stroke='#fff' opacity={0.7} tickLine={false} tickMargin={-20}  />
-           
+         <XAxis dataKey="day" axisLine={false} stroke='#fff' opacity={0.7} tickLine={false} tickMargin={-20} padding={{ left: 10, right: 10 }} />
+            <YAxis domain={[minVal - 20, maxVal + 20]} hide={true} />
             <Tooltip content={<CustomTooltip  />} />  
-            <Line type="monotone" dataKey="duration" stroke="#ffffff" dot={{ r: 0 }} activeDot={{ r: 3 }} />
+            <Line type="monotone" dataKey="sessionLength" stroke="#ffffff" dot={{ r: 0 }} activeDot={{ r: 3 }} />
           </LineChart>
         </ResponsiveContainer>
       </div>

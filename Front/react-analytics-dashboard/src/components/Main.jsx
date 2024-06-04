@@ -15,10 +15,11 @@ export default function Main() {
     const [user, setUser] = useState(null);
     const [activity, setActivity] = useState(null);
     const [averageSessions, setaverageSessions] = useState(null);
+    const [usernutrients,SetNutrients] =useState(null);
     const [performance, setPerformance] = useState(null);
     const [errors, setErrors] = useState([]);
 
-    const score= 0.12;
+    const score = 0.12;
 
 
     // console.log('Rendering Main component');
@@ -54,12 +55,16 @@ export default function Main() {
                 .then(([user, userActivity, userAverageSessions, userPerformance]) => {
                     if (user.error || userActivity.error || userAverageSessions.error || userPerformance.error) {
                         console.error("One or more promises failed:", { user, userActivity, userAverageSessions, userPerformance });
-                        
+
                     } else {
                         setUser(user);  // Update the user state
+                        console.log("FEtched User", user)
                         setActivity(userActivity);
+                        console.log("Fetched userActivity:", userActivity)
                         setaverageSessions(userAverageSessions);
+                        console.log("Fetched averagesessions:", userAverageSessions)
                         setPerformance(userPerformance);
+                        console.log("Fetched performance:", userPerformance)
                     }
                 })
                 .catch(err => {
@@ -70,27 +75,47 @@ export default function Main() {
         fetchData();
     }, [id])
 
+    const nutrients = user ? user.data.keyData : null;
+
+    console.log ("Main nutrients:",nutrients)
+
 
 
     return (
         <div className="Body">
-            <Header />
 
+            <Header />
+            {errors.length > 0 && (
+                <div className="error">
+                    <p>There was an error fetching data:</p>
+                    <ul>
+                        {errors.map((error, index) => (
+                            <li key={index}>{error.source}: {error.error.message}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
             <div className="main">
                 <Sidebar />
                 <div className="dashboardcontent">
                     <section className="left">
                         <div className="h1">Bonjour <span className="firstname">{user ? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
                         <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
-                        <Dailyactivity activity={activity} />
-                        <div className="sessionsperfo">
+                        {activity?( <Dailyactivity activity={activity} />): (
+      <div>Loading...</div>
+    )}
+{ averageSessions && performance && score ?(<div className="sessionsperfo">
                             <Averagesessions sessions={averageSessions} />
                             <Performance performance={performance} />
                             <Score score={score} />
-                        </div>
+                        </div>):
+      (<div>Loading...</div>
+    ) }
                     </section>
                     <section className="right">
-                     <Nutrients />
+                     { nutrients? (  <Nutrients nutrients={nutrients}/>) :(
+      <div>Loading...</div>)
+     }
                     </section>
                 </div>
             </div>

@@ -8,69 +8,83 @@ import {
     Legend,
     ResponsiveContainer,
   } from 'recharts';
-  
-  const data = [
-    { day: 1, weight: 69, calories: 300 },
-    { day: 2, weight: 70, calories: 320 },
-    { day: 3, weight: 68, calories: 356 },
-    { day: 4, weight: 69, calories: 300 },
-    { day: 5, weight: 69, calories: 310 },
-    { day: 6, weight: 69, calories: 315 },
-    { day: 7, weight: 69, calories: 300 },
-    { day: 8, weight: 70, calories: 360 },
-    { day: 9, weight: 69, calories: 320 },
-    { day: 10, weight: 69, calories: 340 },
-  ];
-  
-  const weights = data.map(item => item.weight);
-  const min = Math.min(...weights);
-  const max = Math.max(...weights);
-  const median = weights.sort((a, b) => a - b)[Math.floor(weights.length / 2)];
 
- 
-  const formatTicks = (value) => {
-    if (value === min || value === median || value === max) {
-      return value;
-    }
-    return '';
-  };
-
-
-
-
-
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="custom-tooltip" style={{display:'flex', 
-        flexDirection:'column',
-         gap:'20px',
-          backgroundColor: '#ff0000',
-          color:'#fff',
-           padding: '20px 5px',
-            border: '1px solid #ccc',position: 'relative',
-            top: '-95px',
-
-            }}>
-          
-          <p className="intro">{` ${payload[0].value} kg`}</p>
-          <p className="intro">{`${payload[1].value} kcal`}</p>
-        </div>
-      );
-    }
-  
-    return null;
-  };
-
-  const RoundedBar = (props) => {
-   
-  
-    return <rect x={props.x} y={props.y} width={8} height={props.height} fill={props.fill} rx={5} ry={5} />;
-  };
+  import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
   
 
   
   export default function Dailyactivity(props){
+
+    // const data = [
+    //   { ind: 1, kilogram: 69, calories: 300 },
+    //   { ind: 2, kilogram: 70, calories: 320 },
+    //   { ind: 3, kilogram: 68, calories: 356 },
+    //   { ind: 4, kilogram: 69, calories: 300 },
+    //   { ind: 5, kilogram: 69, calories: 310 },
+    //   { ind: 6, kilogram: 69, calories: 315 },
+    //   { ind: 7, kilogram: 69, calories: 300 },
+    //   { ind: 8, kilogram: 70, calories: 360 },
+    //   { ind: 9, kilogram: 69, calories: 320 },
+    //   { ind: 10, kilogram: 69, calories: 340 },
+    // ];
+  
+    console.log("Props",props.activity)
+
+
+
+    const data= props.activity
+  
+
+    
+    const kilograms = data.map(item => item.kilogram);
+    const min = Math.min(...kilograms);
+    const max = Math.max(...kilograms);
+    const median = kilograms.sort((a, b) => a - b)[Math.floor(kilograms.length / 2)];
+  
+   
+    const formatTicks = (value) => {
+      if (value === min || value === median || value === max) {
+        return value;
+      }
+      return '';
+    };
+  
+  
+  
+  
+  
+    const CustomTooltip = ({ active, payload, label }) => {
+      if (active && payload && payload.length) {
+        return (
+          <div className="custom-tooltip" style={{display:'flex', 
+          flexDirection:'column',
+           gap:'20px',
+            backgroundColor: '#ff0000',
+            color:'#fff',
+             padding: '20px 5px',
+              border: '1px solid #ccc',position: 'relative',
+              top: '-95px',
+  
+              }}>
+            
+            <p className="intro">{` ${payload[0].value} kg`}</p>
+            <p className="intro">{`${payload[1].value} kcal`}</p>
+          </div>
+        );
+      }
+    
+      return null;
+    };
+  
+    const RoundedBar = (props) => {
+     
+    
+      return <rect x={props.x} y={props.y} width={8} height={props.height} fill={props.fill} rx={5} ry={5} />;
+    };
+    
+  
+
+
     return (
       <div className="dailyactivity">
           <ResponsiveContainer width="100%" height={250}>
@@ -81,12 +95,12 @@ import {
               }}bargap={10} barCategoryGap="30%"
             >
               <CartesianGrid border ="solid blue 1px" strokeDasharray="1 3" padding={{bottom:50}} />
-              <XAxis dataKey="day" axisLine={false} margin={20}  tickLine ={false} tickMargin={20} height={80} padding={{top:20}}/>
+              <XAxis dataKey="ind" axisLine={false} margin={20}  tickLine ={false} tickMargin={20} height={80} padding={{top:20}}/>
               <YAxis yAxisId="right" orientation="left" stroke="transparent"  />
-              <YAxis yAxisId="weight" orientation="right" stroke="#ff0000" domain={[min,max]} axisLine={false} tickLine={false} tickFormatter={formatTicks} tickMargin={20}  />
+              <YAxis yAxisId="kilogram" orientation="right" stroke="#ff0000" domain={[min,max]} axisLine={false} tickLine={false} tickFormatter={formatTicks} tickMargin={20}  />
               <Tooltip content={<CustomTooltip />} />
               <Legend />
-              <Bar yAxisId="weight" dataKey="weight" fill="#000000" shape={<RoundedBar />} />
+              <Bar yAxisId="kilogram" dataKey="kilogram" fill="#000000" shape={<RoundedBar />} />
               <Bar yAxisId="right" dataKey="calories" fill="#ff0000"  shape={<RoundedBar />}/>
             </BarChart>
           </ResponsiveContainer>

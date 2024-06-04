@@ -18,17 +18,18 @@ export async function getUser(userId){
 
   const user = await response.json();
 
-  console.log('Fetched user:', user); // Add this line
+  console.log('Fetching user:', user); 
 
   return user;
 
 }
 
 
+
 export async function getUserActivity(userId){
   if(USE_MOCK_DATA) {
     const useractivity= USER_ACTIVITY.find(useractivity => useractivity.userId === userId);
-    return useractivity;
+    return useractivity.data.sessions;
   }
   const response=await fetch(`http://localhost:3000/user/${userId}/activity`)
   if (!response.ok){
@@ -37,9 +38,9 @@ export async function getUserActivity(userId){
 
   const useractivity = await response.json();
 
-  console.log('Fetched activity:', useractivity); // Add this line
+  console.log('Fetching activity:', useractivity.data.sessions); 
 
-  return useractivity;
+  return useractivity.data.sessions;
 
 }
 
@@ -57,7 +58,7 @@ export async function getUserPerformance(userId){
 
   const userperformance = await response.json();
 
-  console.log('Fetched activity:', userperformance); 
+  console.log('Fetching performance:', userperformance.data); 
 
   return userperformance;  
 
@@ -70,7 +71,7 @@ export async function getUserAverageSessions(userId){
 
   if(USE_MOCK_DATA) {
     const useravsessions= USER_AVERAGE_SESSIONS.find(useravsessions => useravsessions.userId === userId)[0];
-    console.log(useravsessions);
+    console.log("Average sessions:",useravsessions);
     return useravsessions;
 
   }
@@ -81,7 +82,7 @@ export async function getUserAverageSessions(userId){
 
   const useravsessions = await response.json();
 
-  console.log('Fetched activity:', useravsessions); // Add this line
+  console.log('Fetching sessions:', useravsessions); // Add this line
 
   return useravsessions;
 

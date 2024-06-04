@@ -54,6 +54,7 @@ export default function Main() {
                 .then(([user, userActivity, userAverageSessions, userPerformance]) => {
                     if (user.error || userActivity.error || userAverageSessions.error || userPerformance.error) {
                         console.error("One or more promises failed:", { user, userActivity, userAverageSessions, userPerformance });
+                        
                     } else {
                         setUser(user);  // Update the user state
                         setActivity(userActivity);

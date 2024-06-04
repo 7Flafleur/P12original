@@ -47,11 +47,11 @@ export default function Averagesessions(){
               top: 20, right: 20, left: 20, bottom: 0,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="day" />
-            <YAxis />
-            <Tooltip content={<CustomTooltip />} />
-            <Line type="monotone" dataKey="duration" stroke="#ffffff" dot={{ r: 6 }} activeDot={{ r: 8 }} />
+         
+            <XAxis dataKey="day" axisline={false} />
+           
+            <Tooltip content={<CustomTooltip />} />  
+            <Line type="monotone" dataKey="duration" stroke="#ffffff" dot={{ r: 0 }} activeDot={{ r: 8 }} />
           </LineChart>
         </ResponsiveContainer>
       </div>

@@ -1,12 +1,15 @@
-import mockData from './__mocks__.json';
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from './__mocks__';
 
 const USE_MOCK_DATA = false; // Set this to false to fetch data from the URL
+
 
 
 export async function getUser(userId){
 
   if(USE_MOCK_DATA) {
-    return mockData.USER_MAIN_DATA.find(user => user.id === userId)
+    const user= USER_MAIN_DATA.find(user => user.id === userId);
+    console.log("User:", user)
+    return user;
   }
   const response=await fetch(`http://localhost:3000/user/${userId}`)
   if (!response.ok){
@@ -24,7 +27,8 @@ export async function getUser(userId){
 
 export async function getUserActivity(userId){
   if(USE_MOCK_DATA) {
-    return mockData.USER_ACTIVITY.find(useractivity => useractivity.data.userId === userId)
+    const useractivity= USER_ACTIVITY.find(useractivity => useractivity.userId === userId);
+    return useractivity;
   }
   const response=await fetch(`http://localhost:3000/user/${userId}/activity`)
   if (!response.ok){
@@ -42,7 +46,9 @@ export async function getUserActivity(userId){
 
 export async function getUserPerformance(userId){
   if(USE_MOCK_DATA) {
-    return mockData.USER_PERFORMANCE.find(userperformance => userperformance.data.userId === userId)
+    const userperformance= USER_PERFORMANCE.find(userperformance => userperformance.userId === userId);
+    console.log(userperformance);
+    return userperformance;
   }
   const response=await fetch(`http://localhost:3000/user/${userId}/performance`)
   if (!response.ok){
@@ -51,7 +57,7 @@ export async function getUserPerformance(userId){
 
   const userperformance = await response.json();
 
-  console.log('Fetched activity:', userperformance); // Add this line
+  console.log('Fetched activity:', userperformance); 
 
   return userperformance;  
 
@@ -63,7 +69,10 @@ export async function getUserPerformance(userId){
 export async function getUserAverageSessions(userId){
 
   if(USE_MOCK_DATA) {
-    return mockData.USER_AVERAGE_SESSIONS.find(useravsessions => useravsessions.data.userId === userId)
+    const useravsessions= USER_AVERAGE_SESSIONS.find(useravsessions => useravsessions.userId === userId)[0];
+    console.log(useravsessions);
+    return useravsessions;
+
   }
   const response=await fetch(`http://localhost:3000/user/${userId}/average-sessions`)
   if (!response.ok){

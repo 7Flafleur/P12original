@@ -42,7 +42,16 @@ import {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip" style={{display:'flex', flexDirection:'column', gap:'20px', backgroundColor: '#ff0000',color:'#fff', padding: '20px 5px', border: '1px solid #ccc' }}>
+        <div className="custom-tooltip" style={{display:'flex', 
+        flexDirection:'column',
+         gap:'20px',
+          backgroundColor: '#ff0000',
+          color:'#fff',
+           padding: '20px 5px',
+            border: '1px solid #ccc',position: 'relative',
+            top: '-95px',
+
+            }}>
           
           <p className="intro">{` ${payload[0].value} kg`}</p>
           <p className="intro">{`${payload[1].value} kcal`}</p>

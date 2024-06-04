@@ -22,19 +22,44 @@ import {
     { day: 10, weight: 69, calories: 340 },
   ];
   
+  const weights = data.map(item => item.weight);
+  const min = Math.min(...weights);
+  const max = Math.max(...weights);
+  const median = weights.sort((a, b) => a - b)[Math.floor(weights.length / 2)];
+
+ 
+  const formatTicks = (value) => {
+    if (value === min || value === median || value === max) {
+      return value;
+    }
+    return '';
+  };
+
+
+
+
+
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip" style={{ backgroundColor: '#fff', padding: '5px', border: '1px solid #ccc' }}>
-          <p className="label">{`Day ${label}`}</p>
-          <p className="intro">{`Weight: ${payload[0].value} kg`}</p>
-          <p className="intro">{`Calories burned: ${payload[1].value} kcal`}</p>
+        <div className="custom-tooltip" style={{display:'flex', flexDirection:'column', gap:'20px', backgroundColor: '#ff0000',color:'#fff', padding: '20px 5px', border: '1px solid #ccc' }}>
+          
+          <p className="intro">{` ${payload[0].value} kg`}</p>
+          <p className="intro">{`${payload[1].value} kcal`}</p>
         </div>
       );
     }
   
     return null;
   };
+
+  const RoundedBar = (props) => {
+   
+  
+    return <rect x={props.x} y={props.y} width={8} height={props.height} fill={props.fill} rx={5} ry={5} />;
+  };
+  
+
   
   export default function Dailyactivity(props){
     return (
@@ -43,17 +68,17 @@ import {
             <BarChart
               data={data}
               margin={{
-                top: 20, right: 30, left: 20, bottom: 5,
-              }}
+                top: 20, right: 30, left: 20, bottom: 0,
+              }}bargap={10} barCategoryGap="30%"
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="day" />
-              <YAxis yAxisId="left" orientation="left" stroke="#000000" domain={[69, 71]} />
-              <YAxis yAxisId="right" orientation="right" stroke="#ff0000" />
+              <CartesianGrid border ="solid blue 1px" strokeDasharray="1 3" padding={{bottom:50}} />
+              <XAxis dataKey="day" axisLine={false} margin={20}  tickLine ={false} tickMargin={20} height={80} padding={{top:20}}/>
+              <YAxis yAxisId="right" orientation="left" stroke="transparent"  />
+              <YAxis yAxisId="weight" orientation="right" stroke="#ff0000" domain={[min,max]} axisLine={false} tickLine={false} tickFormatter={formatTicks} tickMargin={20}  />
               <Tooltip content={<CustomTooltip />} />
               <Legend />
-              <Bar yAxisId="left" dataKey="weight" fill="#000000" />
-              <Bar yAxisId="right" dataKey="calories" fill="#ff0000" />
+              <Bar yAxisId="weight" dataKey="weight" fill="#000000" shape={<RoundedBar />} />
+              <Bar yAxisId="right" dataKey="calories" fill="#ff0000"  shape={<RoundedBar />}/>
             </BarChart>
           </ResponsiveContainer>
       </div>

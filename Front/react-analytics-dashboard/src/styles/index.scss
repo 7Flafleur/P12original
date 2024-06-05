@@ -1,6 +1,7 @@
 @use "sass:math";
 @import 'app.scss';
 @import 'averagesessions.scss';
+@import 'errorpage.scss';
 @import 'body.scss';
 @import 'header.scss';
 @import 'sidebar.scss';
@@ -30,15 +31,3 @@
      
   }
   
-
-  .shrug , .IdPlease {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: $lightgrey;
-    color:$red;
-
-    width:100%;
-    height:100%;
-  }

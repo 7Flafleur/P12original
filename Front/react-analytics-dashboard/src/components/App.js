@@ -1,5 +1,5 @@
 import Header from "./Header";
-import IdPlease from "./Useridplease"; 
+
 import Main from "./Main";
 import Errrorpage from "./Errorpage"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -14,7 +14,7 @@ export default function App() {
 
        
         <Routes>
-          <Route path="/" element={<IdPlease/>}/>
+          <Route path="/" element={<Errrorpage/>}/>
           <Route path="/user/:id" element={<Main />} />
           <Route path="*" element={<Errrorpage />} />
         </Routes>

@@ -30,13 +30,18 @@ import {
     const kilograms = data.map(item => item.kilogram);
     const min = Math.min(...kilograms);
     const max = Math.max(...kilograms);
-    const median = kilograms.sort((a, b) => a - b)[Math.floor(kilograms.length / 2)];
+   
+    const avg = (min+max)/2
   
    
     const formatTicks = (value) => {
-      if (value === min || value === median || value === max) {
+      if (value === min || value === avg || value === max) {
         return value;
       }
+      if (Math.abs(value - avg) < 1) { // Adjust this value as needed
+        return avg;
+      }
+      
       return '';
     };
   
@@ -89,7 +94,7 @@ import {
               <CartesianGrid border ="solid blue 1px" strokeDasharray="1 3" padding={{bottom:50}} />
               <XAxis dataKey="day" axisLine={false} margin={20}  tickLine ={false} tickMargin={20} height={80} padding={{top:10}}/>
               <YAxis yAxisId="right" orientation="left" stroke="transparent"  />
-              <YAxis yAxisId="kilogram" orientation="right" stroke="#ff0000" domain={[min,max]} axisLine={false} tickLine={false} tickFormatter={formatTicks} tickMargin={20}  />
+              <YAxis yAxisId="kilogram" orientation="right" stroke="#ff0000" domain={[min,max]} axisLine={false} tickLine={false}  tickMargin={20} tickFormatter={formatTicks} ticks={[min, avg, max]} />
               <Tooltip content={<CustomTooltip />} />
               <Legend />
               <Bar yAxisId="kilogram" dataKey="kilogram" fill="#000000" shape={<RoundedBar />} />

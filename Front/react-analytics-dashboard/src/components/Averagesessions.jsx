@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import {
+  CartesianGrid,
   LineChart,
   Line,
   XAxis,
@@ -105,7 +106,8 @@ console.log("active index ",activeIndex )
             <YAxis domain={[minVal - 20, maxVal + 20]} hide={true} />
             <Tooltip content={<CustomTooltip  />} />  
             <Line type="monotone" dataKey="sessionLength" stroke="#ffffff" dot={{ r: 0 }} activeDot={{ r: 3 }} />
-            
+            <CartesianGrid stroke="#fff" opacity={0.5} horizontal={false} /> {/* Add this line */}
+
               <ReferenceArea className='referencearea'
                 x1={activeIndex}
                 x2={6}

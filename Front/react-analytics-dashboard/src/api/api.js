@@ -1,6 +1,7 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from './__mocks__';
+import {USE_MOCK_DATA }from '../config';
 
-const USE_MOCK_DATA = false; // Set this to false to fetch data from the URL
+ // Set this to false to fetch data from the URL
 
 
 
@@ -8,9 +9,10 @@ export async function getUser(userId){
 
   if(USE_MOCK_DATA) {
     const user= USER_MAIN_DATA.find(user => user.id === userId);
-    console.log("User:", user)
+    console.log("Mock User:", user)
     return user;
   }
+  
   const response=await fetch(`http://localhost:3000/user/${userId}`)
   if (!response.ok){
     throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);

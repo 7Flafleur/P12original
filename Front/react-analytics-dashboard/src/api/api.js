@@ -1,12 +1,12 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from './__mocks__';
 
-const USE_MOCK_DATA = false; // Set this to false to fetch data from the URL
-
+const USE_MOCK_DATA = false;
 
 
 export async function getUser(userId){
 
   if(USE_MOCK_DATA) {
+    console.log("Using mock data")
     const user= USER_MAIN_DATA.find(user => user.id === userId);
     console.log("User:", user)
     return user;

@@ -11,8 +11,21 @@
     text-align: center;
     width:30%;
     height: 100%;
+    position: relative;
+  }
+
+  .responsivecontainer{
+    position: relative;
+    top: -20px;
+    padding:0;
+    width: 100%;
+    height:100%;
+    box-sizing: border-box;
+
+    
   }
   
+
   .custom-tooltip {
     background-color: #fff;
     padding: 10px;
@@ -29,6 +42,11 @@
     opacity: .7;
     text-wrap: wrap;
     text-align: left;
+    background-color: transparent;
+    z-index: 2;
+    position: relative;
+    left: 30px;
+    top: 40px;
   }
 
 

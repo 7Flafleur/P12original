@@ -32,7 +32,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 export default function Averagesessions(props){
 
 
-  const [activeIndex,setActiveindex] = useState(null)
+  const [activeIndex,setActiveindex] = useState(7)
 
   function MouseOverState(state){
      if(state.isTooltipActive){
@@ -41,7 +41,7 @@ export default function Averagesessions(props){
       setActiveindex(index)
      }
      else{
-      setActiveindex(null)
+      setActiveindex(7)
      }
  
   }
@@ -86,17 +86,19 @@ const maxVal = Math.max(...sessions.map(item => item.sessionLength));
 console.log("active index ",activeIndex )
 
 
+
+
     return(
 
       
         <div className="averagesessions">
-        <ResponsiveContainer width="100%" height="90%">
+        <ResponsiveContainer className="responsivecontainer" width="100%" height="100%">
         <p className='durée'>Durée moyenne des séances</p>
 
           <LineChart width="100%" height="100%"
             data={sessions} 
             onMouseMove={MouseOverState}
-            onMouseLeave={() => setActiveindex(null)}
+            onMouseLeave={() => setActiveindex(7)}
           >
          
          <XAxis dataKey="day" axisLine={false} stroke='#fff' opacity={0.7} tickLine={false} tickMargin={-20} padding={{ left: 10, right: 10 }} />

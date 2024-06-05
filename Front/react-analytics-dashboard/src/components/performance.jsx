@@ -21,7 +21,7 @@ const perf=props.performance.data
 
 const maxVal = Math.max(...perf.map(item => item.value));
 
-const newperf = perf.map((item) => {
+let newperf = perf.map((item) => {
   let kind;
   switch(item.kind){
     case 1:
@@ -53,15 +53,25 @@ console.log("NewPerf",newperf)
 
 
 
+newperf = newperf.reverse()
+
+
+
+
+
+
+
+
+
 
 
  return ( <div className="performance" style={{ padding: 0 }}>
       <ResponsiveContainer width="100%" height="100%" style={{padding:0,margin:0}} >
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={newperf}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="kind" fontSize={10} fontWeight={800} color='#FFF'/>
-          <PolarRadiusAxis domain={[0, maxVal]} tick={false} />
-          <Radar name="Mike" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.6} />
+          <PolarGrid gridType='polygon' />
+          <PolarAngleAxis dataKey="kind" fontSize={11}  color='#FFF' tickLine={false} tick={{fill:'#fff'}} />
+          <PolarRadiusAxis domain={[0, maxVal]} tick={false} axisLine={false} tickLine={false} />
+          <Radar name="User" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
   </div>

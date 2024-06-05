@@ -68,7 +68,7 @@ newperf = newperf.reverse()
  return ( <div className="performance" style={{ padding: 0 }}>
       <ResponsiveContainer width="100%" height="100%" style={{padding:0,margin:0}} >
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={newperf}>
-          <PolarGrid gridType='polygon' />
+          <PolarGrid radialLines={false} />
           <PolarAngleAxis dataKey="kind" fontSize={11}  color='#FFF' tickLine={false} tick={{fill:'#fff'}} />
           <PolarRadiusAxis domain={[0, maxVal]} tick={false} axisLine={false} tickLine={false} />
           <Radar name="User" dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.6} />

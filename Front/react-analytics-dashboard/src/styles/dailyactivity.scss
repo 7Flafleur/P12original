@@ -5,3 +5,25 @@
 .dailyactivity{
     background-color: $backgroundgrey;
 }
+
+.quotidienne{
+    display: flex;
+    justify-content: space-between;
+    font-family: Roboto;
+    font-size: 15;
+    font-weight: bold;
+
+    padding: 1.5rem;
+}
+
+.données{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14;
+    font-weight: normal;
+
+    img{
+        padding: 0 1rem .2rem 1rem;
+    }
+}
+

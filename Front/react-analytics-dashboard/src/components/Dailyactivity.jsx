@@ -10,6 +10,9 @@ import {
   } from 'recharts';
 
   import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance } from "../api/api";
+
+  import Oval from '../styles/pics/Oval.png'
+  import Ovalcopy from '../styles/pics/OvalCopy.png'
   
 
   
@@ -83,7 +86,7 @@ import {
 
     return (
       <div className="dailyactivity">
-        <p className='quotidienne'>Activité quotidienne <span>Poids</span> <span>Calories brûlées</span> </p>
+        <p className='quotidienne'><span className='acti'>Activité quotidienne</span> <span className='données'><span><img src={Oval} alt='dot' />Poids (kg)</span> <span> <img src={Ovalcopy} alt="red dot" />Calories brûlées (kcal)</span></span> </p>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart
               data={data}
@@ -96,7 +99,7 @@ import {
               <YAxis yAxisId="right" orientation="left" stroke="transparent"  />
               <YAxis yAxisId="kilogram" orientation="right" stroke="#ff0000" domain={[min,max]} axisLine={false} tickLine={false}  tickMargin={20} tickFormatter={formatTicks} ticks={[min, avg, max]} />
               <Tooltip content={<CustomTooltip />} />
-              <Legend />
+              
               <Bar yAxisId="kilogram" dataKey="kilogram" fill="#000000" shape={<RoundedBar />} />
               <Bar yAxisId="right" dataKey="calories" fill="#ff0000"  shape={<RoundedBar />}/>
             </BarChart>

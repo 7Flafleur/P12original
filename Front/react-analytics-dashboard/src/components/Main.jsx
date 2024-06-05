@@ -20,6 +20,10 @@ export default function Main() {
     const [errors, setErrors] = useState([]);
 
 
+    function changedatasource(){
+        USE_MOCK_DATA = 
+    }
+
 
 
     // console.log('Rendering Main component');
@@ -118,7 +122,9 @@ export default function Main() {
       (<div>Loading...</div>
     ) }
                     </section>
+                    <button className="datasource">Change data source</button>
                     <section className="right">
+                        
                      { nutrients? (  <Nutrients nutrients={nutrients}/>) :(
       <div>Loading...</div>)
      }

@@ -74,6 +74,7 @@ export default function Score(props) {
             dataKey="value"
             startAngle={90}
             endAngle={450}
+            cornerRadius={10}
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

@@ -1,5 +1,11 @@
 @import "variables";
 
+
+.responsivescore{
+  margin-top: -15px;
+  position: relative;
+}
+
 .score{
     background-color:$backgroundgrey;
     // border:red solid 2px;
@@ -22,12 +28,14 @@
   
   .score-chart .recharts-surface {
     transform: rotate(-90deg);
+    
   }
 
   .score-percentage {
+    position: relative;
     font-size: 14px;
     color: #282d30;
-    margin-top: -125px; /* Adjust based on your design */
+  bottom: 52%;
     text-align: center;
     background-color: transparent;
     z-index: 2;
@@ -51,4 +59,16 @@
 
   .pie2{
     z-index: -1;
+  }
+
+  .title{
+    position: absolute;
+    left:5%;
+    top:12%;
+    z-index: 2;
+  }
+
+  .piechart{
+    position: relative;
+    top:10%;
   }

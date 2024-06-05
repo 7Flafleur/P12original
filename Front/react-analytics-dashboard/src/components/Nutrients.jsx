@@ -21,11 +21,14 @@ export default function Nutrients(props) {
 
 
     return (
-        <ul className="nutrients">
-           <li><img src={caloriesIcon} alt="" /><p><span>{props.nutrients.calorieCount}kCal</span><span className="unit">Calories </span></p></li>
-           <li><img src={proteinIcon} alt="" /><p><span>{props.nutrients.proteinCount}g</span><span className="unit">Proteines</span></p></li>
-           <li><img src={carbsIcon} alt="" /><p><span></span>{props.nutrients.carbohydrateCount}g <span className="unit">Glucides</span></p></li>
-           <li><img src={fatIcon} alt="" /><p><span></span>{props.nutrients.lipidCount}g <span className="unit">Lipides</span></p></li>
-        </ul>
+        <div className="nutrients">
+            
+            <ul className="nutrients">
+               <li><img src={caloriesIcon} alt="" /><p><span>{props.nutrients.calorieCount}kCal</span><span className="unit">Calories </span></p></li>
+               <li><img src={proteinIcon} alt="" /><p><span>{props.nutrients.proteinCount}g</span><span className="unit">Proteines</span></p></li>
+               <li><img src={carbsIcon} alt="" /><p><span></span>{props.nutrients.carbohydrateCount}g <span className="unit">Glucides</span></p></li>
+               <li><img src={fatIcon} alt="" /><p><span></span>{props.nutrients.lipidCount}g <span className="unit">Lipides</span></p></li>
+            </ul>
+        </div>
     )
 }

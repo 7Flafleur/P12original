@@ -1,13 +1,23 @@
-import Header from "./Header";
+
 
 import Main from "./Main";
 import Errrorpage from "./Errorpage"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,  } from 'react-router-dom';
 
 
 
 export default function App() {
+
+
+
+
+
+
   return (
+
+   
+
+
     <div className="App">
 
       <Router>
@@ -21,6 +31,9 @@ export default function App() {
       </Router>
 
     </div>
+
+
+
   );
 }
 

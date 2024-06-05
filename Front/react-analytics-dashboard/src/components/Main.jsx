@@ -82,9 +82,7 @@ export default function Main() {
 
     const sessions= user? averageSessions.data.sessions : null;
 
-    console.log("Score:",score)
-
-    console.log ("Main nutrients:",nutrients)
+  
 
 
 

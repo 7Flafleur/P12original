@@ -20,9 +20,6 @@ export default function Main() {
     const [errors, setErrors] = useState([]);
 
 
-    function changedatasource(){
-        USE_MOCK_DATA = 
-    }
 
 
 

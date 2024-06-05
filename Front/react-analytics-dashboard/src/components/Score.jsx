@@ -1,51 +1,3 @@
-// import React from 'react';
-// import {
-//   RadialBarChart, RadialBar, ResponsiveContainer,PolarGrid
-// } from 'recharts';
-
-
-// export default function Score(props){ 
-
-//   console.log("Score score",props)
-
-//   const data = [
-//     {
-//       name: 'Score', value:props.score , fill: '#FF0000',
-//     },
-//     {
-//       name: 'Background', value: 1, fill: '#FFFFFF',
-//     },
-//   ];
-
-//   console.log(typeof(props.score))
-
-//   const percentage = data[0].value*100
-
-
-// return (  <div className="score">
-//       <ResponsiveContainer width="100%" height="100%">
-//         <RadialBarChart cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={data} startAngle={90} >
-        
-//           <RadialBar
-//             minAngle={15}
-//             rx={5}
-//             ry={5}
-//             background
-//             clockWise
-//             dataKey="value"
-            
-      
-//           />
-//         </RadialBarChart>
-//       </ResponsiveContainer>
-//       <div className="score-percentage">
-//       <p className='percent'>{percentage}%</p>
-//       <p className='objectif'>de votre objectif</p>
-//     </div>
-
-//   </div>)
-// }
-
 
 
 
@@ -69,8 +21,8 @@ export default function Score(props) {
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius="70%"
-            outerRadius="80%"
+            innerRadius="85%"
+            outerRadius="95%"
             fill="#fff"
             dataKey="value"
             startAngle={90}
@@ -86,7 +38,7 @@ export default function Score(props) {
             cx="50%"
             cy="50%"
             innerRadius="0"
-            outerRadius="69%"
+            outerRadius="84%"
             fill="#FFFFFF"
             startAngle={90}
             endAngle={450}

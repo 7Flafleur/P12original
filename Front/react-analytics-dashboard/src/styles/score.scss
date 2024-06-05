@@ -4,6 +4,8 @@
 .responsivescore{
   margin-top: -15px;
   position: relative;
+  width: 60%;
+  height:60%;
 }
 
 .score{
@@ -35,7 +37,7 @@
     position: relative;
     font-size: 14px;
     color: #282d30;
-  bottom: 52%;
+  bottom: 35%;
     text-align: center;
     background-color: transparent;
     z-index: 2;
@@ -70,5 +72,6 @@
 
   .piechart{
     position: relative;
-    top:10%;
+    top:25%;
+
   }

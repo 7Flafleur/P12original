@@ -8,6 +8,7 @@ import Nutrients from "./Nutrients";
 import Averagesessions from "./Averagesessions";
 import Performance from "./Performance";
 import Score from "./Score";
+import USE_MOCK_DATA from '../config';
 
 export default function Main() {
 
@@ -74,13 +75,13 @@ export default function Main() {
         fetchData();
     }, [id])
 
-    const nutrients = user ? user.data.keyData : null;
+    const nutrients = user ? user.keyData : null;
 
-    const score = user ? user.data.score : null;
+    const score = user ? user.score : null;
 
-    const performanceprop= user? performance.data :null;
+    const performanceprop= user? performance :null;
 
-    const sessions= user? averageSessions.data.sessions : null;
+    const sessions= user? averageSessions.sessions : null;
 
   
 
@@ -104,14 +105,14 @@ export default function Main() {
                 <Sidebar />
                 <div className="dashboardcontent">
                     <section className="left">
-                        <div className="h1">Bonjour <span className="firstname">{user ? user.data.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
+                        <div className="h1">Bonjour <span className="firstname">{user ? user.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
                         <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
                         {activity?( <Dailyactivity activity={activity} />): (
       <div>Loading...</div>
     )}
 { averageSessions && performance && score ?(<div className="sessionsperfo">
                             <Averagesessions sessions={sessions} />
-                            <Performance performance={performanceprop.data} kinds={performanceprop.kind}/>
+                            <Performance performance={performanceprop} kinds={performanceprop.kind}/>
                             <Score score={score} />
                         </div>):
       (<div>Loading...</div>

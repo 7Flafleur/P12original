@@ -14,7 +14,9 @@ const data = [
 
 export default function Performance(props){
 
-const perf=props.performance
+  console.log(" Performance props ", props)
+
+const perf=props.performance.data
 
 
 const maxVal = Math.max(...perf.map(item => item.value));

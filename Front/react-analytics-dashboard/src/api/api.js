@@ -8,7 +8,8 @@ import {USE_MOCK_DATA }from '../config';
 export async function getUser(userId){
 
   if(USE_MOCK_DATA) {
-    const user= USER_MAIN_DATA.find(user => user.id === userId);
+    console.log("Main data",USER_MAIN_DATA,"userid",userId)
+    const user= USER_MAIN_DATA.find(user => user.id === Number(userId));
     console.log("Mock User:", user)
     return user;
   }
@@ -20,9 +21,9 @@ export async function getUser(userId){
 
   const user = await response.json();
 
-  console.log('Fetching user:', user); 
+  console.log('API Fetching user:', user.data); 
 
-  return user;
+  return user.data;
 
 }
 
@@ -30,8 +31,9 @@ export async function getUser(userId){
 
 export async function getUserActivity(userId){
   if(USE_MOCK_DATA) {
-    const useractivity= USER_ACTIVITY.find(useractivity => useractivity.userId === userId);
-    return useractivity.data.sessions;
+    const useractivity= USER_ACTIVITY.find(useractivity => useractivity.userId === Number(userId));
+    console.log ("Mock activity",useractivity)
+    return useractivity.sessions;
   }
   const response=await fetch(`http://localhost:3000/user/${userId}/activity`)
   if (!response.ok){
@@ -40,7 +42,7 @@ export async function getUserActivity(userId){
 
   const useractivity = await response.json();
 
-  console.log('Fetching activity:', useractivity.data.sessions); 
+  console.log('API Fetching activity:', useractivity.data.sessions); 
 
   return useractivity.data.sessions;
 
@@ -49,8 +51,9 @@ export async function getUserActivity(userId){
 
 export async function getUserPerformance(userId){
   if(USE_MOCK_DATA) {
-    const userperformance= USER_PERFORMANCE.find(userperformance => userperformance.userId === userId);
-    console.log(userperformance);
+    
+    const userperformance=USER_PERFORMANCE.find(userperformance => userperformance.userId === Number(userId));
+    console.log("Mock performance",userperformance);
     return userperformance;
   }
   const response=await fetch(`http://localhost:3000/user/${userId}/performance`)
@@ -60,9 +63,9 @@ export async function getUserPerformance(userId){
 
   const userperformance = await response.json();
 
-  console.log('Fetching performance:', userperformance.data); 
+  console.log('API Fetching performance:', userperformance.data); 
 
-  return userperformance;  
+  return userperformance.data;  
 
 
 }
@@ -72,8 +75,8 @@ export async function getUserPerformance(userId){
 export async function getUserAverageSessions(userId){
 
   if(USE_MOCK_DATA) {
-    const useravsessions= USER_AVERAGE_SESSIONS.find(useravsessions => useravsessions.userId === userId)[0];
-    console.log("Average sessions:",useravsessions);
+    const useravsessions= USER_AVERAGE_SESSIONS.find(useravsessions => useravsessions.userId === Number(userId));
+    console.log("Mock Average sessions:",useravsessions);
     return useravsessions;
 
   }
@@ -84,9 +87,9 @@ export async function getUserAverageSessions(userId){
 
   const useravsessions = await response.json();
 
-  console.log('Fetching sessions:', useravsessions); // Add this line
+  console.log('API Fetching sessions:', useravsessions); // Add this line
 
-  return useravsessions;
+  return useravsessions.data;
 
 }
 

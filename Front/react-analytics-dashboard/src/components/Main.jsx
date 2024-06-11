@@ -106,7 +106,7 @@ export default function Main() {
                 <Sidebar />
                 <div className="dashboardcontent">
                     <section className="left">
-                        <div className="h1">Bonjour <span className="firstname">{user ? user.userInfos.firstName : "Utilisateur inconnu :)"}</span></div>
+                        <div className="h1">Bonjour <span className="firstname">{user ? user.firstName : "Utilisateur inconnu :)"}</span></div>
                         <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
                         {activity?( <Dailyactivity activity={activity} />): (
       <div>Loading...</div>

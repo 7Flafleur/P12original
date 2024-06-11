@@ -18,6 +18,24 @@ async function fetchData (url, customErrorMessage){
 };
 
 
+function normalizeUserData(user){
+  return {
+    id: user.id,
+    firstName: user.userInfos.firstName,
+    lastName: user.userInfos.lastName,
+    age: user.userInfos.age,
+    score: user.score || user.todayScore,
+    keyData: {
+      calorieCount: user.keyData.calorieCount,
+      proteinCount: user.keyData.proteinCount,
+      carbohydrateCount: user.keyData.carbohydrateCount,
+      lipidCount: user.keyData.lipidCount,
+    }
+  };
+};
+
+
+
 
 
 export async function getUser(userId){
@@ -26,14 +44,14 @@ export async function getUser(userId){
     console.log("Main data",USER_MAIN_DATA,"userid",userId)
     const user= USER_MAIN_DATA.find(user => user.id === Number(userId));
     console.log("Mock User:", user)
-    return user;
+    return normalizeUserData(user);
   }
   
 const user=await fetchData(`http://localhost:3000/user/${userId}`, "Error retrieveing user")
 
   console.log('API Fetching user:', user.data); 
 
-  return user.data;
+  return normalizeUserData(user.data);
 
 }
 

@@ -1,7 +1,22 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from './__mocks__';
 import {USE_MOCK_DATA }from '../config';
 
- // Set this to false to fetch data from the URL
+
+
+async function fetchData (url, customErrorMessage){
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(customErrorMessage);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+};
+
 
 
 
@@ -14,12 +29,7 @@ export async function getUser(userId){
     return user;
   }
   
-  const response=await fetch(`http://localhost:3000/user/${userId}`)
-  if (!response.ok){
-    throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);
-  }
-
-  const user = await response.json();
+const user=await fetchData(`http://localhost:3000/user/${userId}`, "Error retrieveing user")
 
   console.log('API Fetching user:', user.data); 
 
@@ -35,12 +45,7 @@ export async function getUserActivity(userId){
     console.log ("Mock activity",useractivity)
     return useractivity.sessions;
   }
-  const response=await fetch(`http://localhost:3000/user/${userId}/activity`)
-  if (!response.ok){
-    throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);
-  }
-
-  const useractivity = await response.json();
+const useractivity = await fetchData(`http://localhost:3000/user/${userId}/activity`, "error retrieving user activity")
 
   console.log('API Fetching activity:', useractivity.data.sessions); 
 
@@ -56,14 +61,8 @@ export async function getUserPerformance(userId){
     console.log("Mock performance",userperformance);
     return userperformance;
   }
-  const response=await fetch(`http://localhost:3000/user/${userId}/performance`)
-  if (!response.ok){
-    throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);
-  }
 
-  const userperformance = await response.json();
-
-  console.log('API Fetching performance:', userperformance.data); 
+const userperformance = await fetchData(`http://localhost:3000/user/${userId}/performance`, "error retrieving user perfomance")
 
   return userperformance.data;  
 
@@ -80,12 +79,8 @@ export async function getUserAverageSessions(userId){
     return useravsessions;
 
   }
-  const response=await fetch(`http://localhost:3000/user/${userId}/average-sessions`)
-  if (!response.ok){
-    throw new Error(`Oups! Aucun utilisateur a cet id! Status: ${response.status}`);
-  }
 
-  const useravsessions = await response.json();
+  const useravsessions=await fetchData(`http://localhost:3000/user/${userId}/average-sessions`, "error fetching user average sessions")
 
   console.log('API Fetching sessions:', useravsessions); // Add this line
 

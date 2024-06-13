@@ -91,31 +91,31 @@ export default function Main() {
         <div className="Body">
 
             <Header />
-            {errors.length > 0 && (
-                <div className="error">
-                    <p>There was an error fetching data:</p>
-                </div>
-            )}
             <div className="main">
                 <Sidebar />
                 <div className="dashboardcontent">
                     <section className="left">
                         <div className="h1">Bonjour <span className="firstname">{user ? user.firstName : "Utilisateur inconnu :)"}</span></div>
-                        <div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>
+                       {errors.length ===0 ? (<div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>) : (<div className="blank"> Hm... 🤔</div>)}
+                        {errors.length > 0 && (
+                <div className="error">
+                    <div className="centralerror">Impossible de récupérer vos données : avez-vous saisi le bon identifiant?</div>
+                </div>
+            )}
                         {activity?( <Dailyactivity activity={activity} />): (
-      <div>Loading...</div>
+      <div></div>
     )}
 { averageSessions && performance && score ?(<div className="sessionsperfo">
                             <Averagesessions sessions={sessions} />
                             <Performance performance={performanceprop} kinds={performanceprop.kind}/>
                             <Score score={score} />
                         </div>):
-      (<div>Loading...</div>
+      (<div className="emoji"> ❓ 🤔 ❓</div>
     ) }
                     </section>
                     <section className="right">
                      { nutrients? (  <Nutrients nutrients={nutrients}/>) :(
-      <div>Loading...</div>)
+      <div className="emoji"> ❓ 🤔 ❓</div>)
      }
                     </section>
                 </div>

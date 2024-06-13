@@ -94,11 +94,6 @@ export default function Main() {
             {errors.length > 0 && (
                 <div className="error">
                     <p>There was an error fetching data:</p>
-                    <ul>
-                        {errors.map((error, index) => (
-                            <li key={index}>{error.source}: {error.error.message}</li>
-                        ))}
-                    </ul>
                 </div>
             )}
             <div className="main">

@@ -37,25 +37,27 @@ function normalizeUserData(user) {
 
 export async function getUser(userId) {
 
-  if (USE_MOCK_DATA) {
+try {  if (USE_MOCK_DATA) {
     console.log("Main data", USER_MAIN_DATA, "userid", userId)
     const user = USER_MAIN_DATA.find(user => user.id === Number(userId));
     console.log("Mock User:", user)
     return normalizeUserData(user);
   }
-
   const user = await fetchData(`http://localhost:3000/user/${userId}`, "Error retrieveing user")
-
   // console.log('API Fetching user:', user.data);
 
-  return normalizeUserData(user.data);
+  return normalizeUserData(user.data);}
+
+  catch (error){
+    console.log(error.message)
+  }
 
 }
 
 
 
 export async function getUserActivity(userId) {
-  if (USE_MOCK_DATA) {
+try {  if (USE_MOCK_DATA) {
     const useractivity = USER_ACTIVITY.find(useractivity => useractivity.userId === Number(userId));
     console.log("Mock activity", useractivity)
     return useractivity.sessions;
@@ -64,13 +66,17 @@ export async function getUserActivity(userId) {
 
   // console.log('API Fetching activity:', useractivity.data.sessions);
 
-  return useractivity.data.sessions;
+  return useractivity.data.sessions;}
+
+  catch (error){
+    console.log(error.message)
+  }
 
 }
 
 
 export async function getUserPerformance(userId) {
-  if (USE_MOCK_DATA) {
+try {  if (USE_MOCK_DATA) {
 
     const userperformance = USER_PERFORMANCE.find(userperformance => userperformance.userId === Number(userId));
     // console.log("Mock performance", userperformance);
@@ -79,7 +85,11 @@ export async function getUserPerformance(userId) {
 
   const userperformance = await fetchData(`http://localhost:3000/user/${userId}/performance`, "error retrieving user perfomance")
 
-  return userperformance.data;
+  return userperformance.data;}
+
+  catch (error){
+    console.log(error.message)
+  }
 
 
 }
@@ -88,7 +98,7 @@ export async function getUserPerformance(userId) {
 
 export async function getUserAverageSessions(userId) {
 
-  if (USE_MOCK_DATA) {
+try {  if (USE_MOCK_DATA) {
     const useravsessions = USER_AVERAGE_SESSIONS.find(useravsessions => useravsessions.userId === Number(userId));
     // console.log("Mock Average sessions:", useravsessions);
     return useravsessions;
@@ -99,7 +109,11 @@ export async function getUserAverageSessions(userId) {
 
   // console.log('API Fetching sessions:', useravsessions); // Add this line
 
-  return useravsessions.data;
+  return useravsessions.data;}
+
+  catch (error){
+    console.log(error.message)
+  }
 
 }
 

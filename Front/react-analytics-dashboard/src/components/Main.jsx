@@ -26,37 +26,29 @@ export default function Main() {
 
     useEffect(() => {
 
-        const fetchData = () => {
-            const promises = [
-                getUser(id).catch(err => {
-                    console.error("Error in getUser:", err);
-                    setErrors(errors => [...errors, { source: 'getUser', error: err }]);       //setter function instead of push to expand existing array!
-                    return { error: err };
-                }),
-                getUserActivity(id).catch(err => {
-                    console.error("Error in getUserActivity:", err);
-                    setErrors(errors => [...errors, { source: 'getUserActivity', error: err }]);
-                    return { error: err };
-                }),
-                getUserAverageSessions(id).catch(err => {
-                    console.error("Error in getUserAverageSessions:", err);
-                    setErrors(errors => [...errors, { source: 'getUserAverageSessions', error: err }]);
-                    return { error: err };
-                }),
-                getUserPerformance(id).catch(err => {
-                    console.error("Error in getUserPerformance", err);
-                    setErrors(errors => [...errors, { source: 'getUserPerformance', error: err }]);
-                    return { error: err }
+        const fetchDataMain = () => {
 
+
+            Promise.all([
+                getUser(id).catch(err =>{
+                    console.error(err);
+                    throw err
+                }),
+                getUserActivity(id).catch(err =>{
+                    console.error(err);
+                    throw err
+                }),
+                getUserAverageSessions(id).catch(err =>{
+                    console.error(err);
+                    throw err
+                }),
+                getUserPerformance(id).catch(err =>{
+                    console.error(err);
+                    throw err
                 })
-            ];
-
-            Promise.all(promises)
+            ])
                 .then(([user, userActivity, userAverageSessions, userPerformance]) => {
-                    if (user.error || userActivity.error || userAverageSessions.error || userPerformance.error) {
-                        console.error("One or more promises failed:", { user, userActivity, userAverageSessions, userPerformance });
-
-                    } else {
+                  
                         setUser(user);  // Update the user state
                         console.log("FEtched User", user)
                         setActivity(userActivity);
@@ -65,14 +57,14 @@ export default function Main() {
                         console.log("Fetched averagesessions:", userAverageSessions)
                         setPerformance(userPerformance);
                         console.log("Fetched performance:", userPerformance)
-                    }
+                    
                 })
                 .catch(err => {
-                    console.error("Error in Promise.all:", err);
+                    console.log("Error in Promise.all:", err);
                 });
 
         };
-        fetchData();
+        fetchDataMain();
     }, [id])
 
     const nutrients = user ? user.keyData : null;
@@ -83,7 +75,21 @@ export default function Main() {
 
     const sessions= user? averageSessions.sessions : null;
 
-  
+    if (!nutrients) {
+        throw new Error("Nutrients is null or undefined");
+      }
+      
+      if (!score) {
+        throw new Error("Score is null or undefined");
+      }
+      
+      if (!performanceprop) {
+        throw new Error("Performanceprop is null or undefined");
+      }
+      
+      if (!sessions) {
+        throw new Error("Sessions is null or undefined");
+      }
 
 
 
@@ -91,31 +97,31 @@ export default function Main() {
         <div className="Body">
 
             <Header />
-            <div className="main">
+            <div className={`main ${!user ? 'mainerror' : ''}`}>
                 <Sidebar />
                 <div className="dashboardcontent">
                     <section className="left">
                         <div className="h1">Bonjour <span className="firstname">{user ? user.firstName : "Utilisateur inconnu :)"}</span></div>
-                       {errors.length ===0 ? (<div className="congrats">Félicitations!Vous avez explosé vos objectifs hier👏</div>) : (<div className="blank"> Hm... 🤔</div>)}
-                        {errors.length > 0 && (
+                       {user? (<div className="congrats">Félicitations! Vous avez explosé vos objectifs hier👏</div>) : (<div className="blank"> Hm... 🤔</div>)}
+                        {!user && (
                 <div className="error">
                     <div className="centralerror">Impossible de récupérer vos données : avez-vous saisi le bon identifiant?</div>
                 </div>
             )}
                         {activity?( <Dailyactivity activity={activity} />): (
-      <div></div>
+      <div>❓ 🤔 ❓ Données non disponibles!</div>
     )}
 { averageSessions && performance && score ?(<div className="sessionsperfo">
                             <Averagesessions sessions={sessions} />
                             <Performance performance={performanceprop} kinds={performanceprop.kind}/>
                             <Score score={score} />
                         </div>):
-      (<div className="emoji"> ❓ 🤔 ❓</div>
+      (<div className="emoji"> ❓ 🤔 ❓ Données non disponibles! </div>
     ) }
                     </section>
                     <section className="right">
                      { nutrients? (  <Nutrients nutrients={nutrients}/>) :(
-      <div className="emoji"> ❓ 🤔 ❓</div>)
+      <div className="emoji"> ❓ 🤔 ❓ Données non disponibles!</div>)
      }
                     </section>
                 </div>

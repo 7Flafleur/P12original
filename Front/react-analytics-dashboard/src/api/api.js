@@ -20,17 +20,17 @@ async function fetchData(url, customErrorMessage) {
 
 function normalizeUserData(user) {
   return {
-    id: user.id,
-    firstName: user.userInfos.firstName,
-    lastName: user.userInfos.lastName,
-    age: user.userInfos.age,
+    id: user.id?.id || null ,
+    firstName: user.userInfos?.firstName || 'anonyme',
+    lastName: user.userInfos?.lastName || 'anonyme',
+    age: user.userInfos?.age || 0,
     score: user.score || user.todayScore,
-    keyData: {
-      calorieCount: user.keyData.calorieCount,
+    keyData: user.keyData? {
+      calorieCount: user.keyData?.calorieCount,
       proteinCount: user.keyData.proteinCount,
       carbohydrateCount: user.keyData.carbohydrateCount,
       lipidCount: user.keyData.lipidCount,
-    }
+    }:null
   };
 };
 

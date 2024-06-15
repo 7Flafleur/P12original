@@ -30,8 +30,10 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "plugin:jest/recommended"
+    ],
+    "plugins": ["jest"]
   },
   "browserslist": {
     "production": [
@@ -47,6 +49,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint-plugin-jest": "^28.6.0",
     "gh-pages": "^6.1.1"
   }
 }

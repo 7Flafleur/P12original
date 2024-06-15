@@ -24,7 +24,7 @@ function normalizeUserData(user) {
     firstName: user.userInfos?.firstName || 'anonyme',
     lastName: user.userInfos?.lastName || 'anonyme',
     age: user.userInfos?.age || 0,
-    score: user.score || user.todayScore,
+    score: (user.score || user.todayScore)? user.score || user.todayScore : null ,
     keyData: user.keyData? {
       calorieCount: user.keyData?.calorieCount,
       proteinCount: user.keyData.proteinCount,

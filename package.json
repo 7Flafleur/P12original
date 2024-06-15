@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "nvm": "^0.0.4",
-    "recharts": "^2.12.7"
-  }
-}

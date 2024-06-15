@@ -75,21 +75,6 @@ export default function Main() {
 
     const sessions= user? averageSessions.sessions : null;
 
-    if (!nutrients) {
-        throw new Error("Nutrients is null or undefined");
-      }
-      
-      if (!score) {
-        throw new Error("Score is null or undefined");
-      }
-      
-      if (!performanceprop) {
-        throw new Error("Performanceprop is null or undefined");
-      }
-      
-      if (!sessions) {
-        throw new Error("Sessions is null or undefined");
-      }
 
 
 

@@ -73,7 +73,7 @@ export default function Main() {
 
     const performanceprop= user? performance :null;
 
-    const sessions= user? averageSessions.sessions : null;
+    const sessions= averageSessions? averageSessions.sessions : null;
 
 
 

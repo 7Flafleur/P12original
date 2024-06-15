@@ -96,13 +96,15 @@ export default function Main() {
                         {activity?( <Dailyactivity activity={activity} />): (
       <div>❓ 🤔 ❓ Données non disponibles!</div>
     )}
-{ averageSessions && performance && score ?(<div className="sessionsperfo">
-                            <Averagesessions sessions={sessions} />
-                            <Performance performance={performanceprop} kinds={performanceprop.kind}/>
-                            <Score score={score} />
-                        </div>):
-      (<div className="emoji"> ❓ 🤔 ❓ Données non disponibles! </div>
+<div className="sessionsperfo">
+                           {averageSessions? ( <Averagesessions sessions={sessions}/>) :    (<div className="emoji"> ❓ 🤔 ❓ Données non disponibles! </div>
     ) }
+                           {performance?  (<Performance performance={performanceprop} kinds={performanceprop.kind}/>) :    (<div className="emoji"> ❓ 🤔 ❓ Données non disponibles! </div>
+    ) }
+                           {score? (<Score score={score} />)  :  (<div className="emoji"> ❓ 🤔 ❓ Données non disponibles! </div>
+    ) }
+                        </div>
+   
                     </section>
                     <section className="right">
                      { nutrients? (  <Nutrients nutrients={nutrients}/>) :(
